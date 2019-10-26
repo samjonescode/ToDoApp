@@ -29,14 +29,22 @@ export class ToDoListComponent implements OnInit {
       let filteredtodos = this.tdServ.filterToDos(todos, false);
       //now we set isFetching to false to indicate the todos are fetched.
       this.isFetching = false;
-
-      // then we sort the todos by recency
-      this.todos = filteredtodos.sort((b): number=>{
-        return b.submittedAt;
-      });
+      this.todos = filteredtodos.sort();
+     
     }, error=>{
       //if error occurs in fetching, this error function will be called back.
       this.error=error.message; //we just save the content of the error message to this.error
     })
+  }
+
+
+  sortDates(timestamps: []){
+     //
+     let dates: any = [];
+     for(let t of timestamps){
+       dates.push(t);
+     }
+
+     console.log(dates.sort())
   }
 }

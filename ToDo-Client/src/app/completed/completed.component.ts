@@ -18,12 +18,8 @@ export class CompletedComponent implements OnInit {
     this.tdServ.getAllToDos().subscribe(todos =>{
       let filteredTodos = this.tdServ.filterToDos(todos, true);
       this.isFetching = false;
+      this.todos = filteredTodos.sort();
 
-      this.todos = filteredTodos.sort((b): number=>{
-        console.log(b.completedAt)
-        
-        return b.completedAt;
-      });
     }, error =>{
       this.error = error.message;
     })
