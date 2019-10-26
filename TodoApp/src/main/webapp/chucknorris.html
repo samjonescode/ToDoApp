@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="ISO-8859-1">
+        <title>
+
+        </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div style="text-align: center;" id="container-fluid">
+            <nav class="nav navbar-default">
+                <li class="nav-item">
+                    <a href="" class="nav-link">Favorites</a></li>
+            </nav>
+            <div class="form-group">
+                    <button class="btn btn-warning" onClick="clearTable()">Clear Table</button>
+                </div>
+            <h1>Search for movies by title </h1>
+            
+            <div style="display:inline-block;" class="col-lg-12" >
+                    <div class="col-lg-6" style="display:inline-block;">
+                            <button style="display:inline-block;"class="btn btn-primary" onClick="getJoke()" id='submit'>Submit</button>
+                    </div>
+                   
+            </div>
+
+           
+        <table class="table bordered-table">
+            <th>Joke</th>
+            <th>Save</th>
+
+            <tbody id="jokeTable">
+
+            </tbody>
+        </table>
+    </div>
+
+        <script type="text/javascript" src="jokes.js"></script>
+    </body>
+</html>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+		
+		<!-- activates the annotations for Spring -->
+		<context:annotation-config />
+		
+		<!-- tells Spring to scan these packages for annotations, such as repository, service and controller -->
+		<context:component-scan base-package="com.samueljones.dao"></context:component-scan> <!-- Repository  -->
+		<context:component-scan base-package="com.samueljones.controller"></context:component-scan> <!-- Controller -->
+		
+		<!-- Allows Spring ORM to manage the transactions with the DB, using @Transactional -->
+		<tx:annotation-driven/>
+		
+		<!-- Activates annotations such as @RestController, @RequestBody, @RequestParam, @PathVariable -->
+		<mvc:annotation-driven/>
+		
+		<!-- Allows the HTML folder in WEB-INF to serve HTML pages as normal -->
+		<mvc:default-servlet-handler />
+		
+		<!-- Activates Spring AOP -->
+		<aop:aspectj-autoproxy/>
+		
+		<!-- Data source, session factory and transaction manager are the 3 beans required to configure Spring ORM -->
+		<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="oracle.jdbc.driver.OracleDriver" />
+		 <property name="url" value="jdbc:oracle:thin:@samjavadb.cecxuvq3cw6r.us-east-2.rds.amazonaws.com:1521:orcl" />
+       <property name="username" value="sambo" />
+       <property name="password" value="sambo" />
+	</bean>
+	<!-- SESSIONFACTORY -->
+<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="com.samueljones.model" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+		<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+		</beans>

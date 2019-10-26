@@ -1,0 +1,8 @@
+<p *ngIf="isFetching && !error">
+
+    <mat-progress-bar style="height:50px; width:500px;margin-top:100px;" mode="indeterminate"></mat-progress-bar>
+
+</p>
+
+<div class="alert alert-danger" *ngIf="error">{{error}}</div>
+<app-to-do-item *ngFor="let td of todos" [todo] = "td"></app-to-do-item>
