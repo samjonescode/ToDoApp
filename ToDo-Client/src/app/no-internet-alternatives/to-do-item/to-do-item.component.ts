@@ -9,7 +9,7 @@ import { TodoSubjectService } from '../material-playground/services/todo-subject
   styleUrls: ['./to-do-item.component.css']
 })
 export class AltToDoItemComponent implements OnInit {
-  @Input() todo: Todo;
+  @Input('todo1') todo: Todo;
   hide: boolean;
 
   constructor(private fakeTdServ: FakeToDoService,

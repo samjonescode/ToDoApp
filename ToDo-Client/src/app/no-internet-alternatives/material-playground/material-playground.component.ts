@@ -7,11 +7,13 @@ import { TodoSubjectService } from './services/todo-subject.service';
 @Component({
   selector: 'app-material-playground',
   templateUrl: './material-playground.component.html',
-  styleUrls: ['./material-playground.component.css']
+  styleUrls: ['./material-playground.component.css'],
+  // providers: [FakeToDoService]
 })
 export class MaterialPlaygroundComponent implements OnInit {
   todos: Todo[];
   completeTodos: Todo[];
+  // fakeTdServ: FakeToDoService;
   
   constructor(
     private fakeTdServ: FakeToDoService,

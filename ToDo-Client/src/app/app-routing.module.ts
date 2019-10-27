@@ -9,7 +9,7 @@ import { MaterialPlaygroundComponent } from './no-internet-alternatives/material
 const routes: Routes = [{path:'todolist', component:ToDoListComponent},
                         {path: 'addtodo', component: NewToDoComponent},
                         {path: 'completedlist', component: CompletedComponent},
-                        {path: 'material', component: MaterialPlaygroundComponent}
+                        {path: 'faketodo', component: MaterialPlaygroundComponent}
                       ];
 
 @NgModule({
